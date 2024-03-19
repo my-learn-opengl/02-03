@@ -19,7 +19,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
 
-./tmp/obj/%.o: ./src/%.c
+./tmp/obj/%.o: ./src/%.c prelude
 	mkdir -p $(@D)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
