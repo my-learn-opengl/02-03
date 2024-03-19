@@ -23,13 +23,6 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(submodules/glfw)
 
-# glad
-add_custom_target(
-  glad ALL
-  COMMAND python3 -m venv tmp/venv && . tmp/venv/bin/activate && cd submodules/glad && pip install -r requirements.txt && python -m glad --out-path=${PROJECT_SOURCE_DIR} --reproducible --api=gl:core=3.3 c && deactivate
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-)
-
 add_executable(${PROJECT_NAME} ${SRCS})
 target_link_libraries(${PROJECT_NAME} glfw ${GLFW_LIBRARIES})
 
