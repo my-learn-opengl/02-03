@@ -2,8 +2,8 @@
 
 set -e
 
-cmake -B tmp/build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
-cmake --build tmp/build
-cp tmp/build/compile_commands.json .
+cmake -B .cache/build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+cmake --build .cache/build
+cp .cache/build/compile_commands.json .
 
-tmp/build/hello-window
+.cache/build/hello-window

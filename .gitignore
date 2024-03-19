@@ -1,4 +1,4 @@
-/tmp
+/.cache
 /compile_commands.json
 
 /hello-window

@@ -5,11 +5,11 @@ set -e
 git submodule update --init
 
 # glad
-python3 -m venv tmp/venv
-. tmp/venv/bin/activate
+python3 -m venv .cache/venv
+. .cache/venv/bin/activate
 (cd submodules/glad && pip3 install -r requirements.txt && python3 -m glad --out-path=../.. --reproducible --api=gl:core=3.3 c)
 deactivate
-rm -rf tmp/venv
+rm -rf .cache/venv
 
 # compile_commands.json
 echo "[
