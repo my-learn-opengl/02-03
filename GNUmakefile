@@ -4,9 +4,9 @@ PHONY_TARGETS := all prelude clean
 SRCS := $(shell find src -type f -name \*.c)
 OBJS := $(patsubst src/%.c,tmp/obj/%.o,$(SRCS))
 
-CPPFLAGS := -Iinclude -DNDEBUG $(shell PKG_CONFIG_PATH="external/lib/pkgconfig" pkg-config --cflags glfw3)
-LDFLAGS := -Lexternal/lib -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
-CFLAGS := -O
+CPPFLAGS := -Iinclude -DNDEBUG $(shell PKG_CONFIG_PATH="external/lib/pkgconfig" pkg-config --cflags-only-I glfw3)
+LDFLAGS := -framework Cocoa -framework OpenGL -framework IOKit $(shell PKG_CONFIG_PATH="external/lib/pkgconfig" pkg-config --libs glfw3)
+CFLAGS := -O $(shell PKG_CONFIG_PATH="external/lib/pkgconfig" pkg-config --cflags-only-other glfw3)
 
 $(PHONY_TARGETS):
 .PHONY: $(PHONY_TARGETS)
